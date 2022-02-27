@@ -65,7 +65,7 @@ app.get("/contrato", async(request,response)=>{
 
     const page = await browser.newPage();
 
-    await page.goto("http://localhost:3001/contract",{
+    await page.goto("https://gerador-pdf.herokuapp.com/contract",{
         waitUntil:"networkidle0"
     })
 
@@ -90,7 +90,7 @@ app.get("/ted", async(request,response)=>{
 
     const page = await browser.newPage();
 
-    await page.goto("http://localhost:3001/tedi",{
+    await page.goto("https://gerador-pdf.herokuapp.com/tedi",{
         waitUntil:"networkidle0"
     })
 
