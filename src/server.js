@@ -69,6 +69,8 @@ app.get("/contrato", async(request,response)=>{
         waitUntil:"networkidle0"
     })
 
+    await page.waitFor(5000);
+    
     const pdf = await page.pdf({
         printBackground:true,
         format:"a4",
