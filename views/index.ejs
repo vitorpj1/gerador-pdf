@@ -28,15 +28,16 @@
             text-decoration: none;
           }
           .main-master{
-               width: 50%;
+               width: 100%;
                margin: 0 auto;
           }
           .main{
                display: flex;
                flex-direction: column;
+               width: 100%;
           }
           .titulo{
-               background-color: #129490;
+               background-color: #F1F1F1;
                text-align: center;
                padding: 30px 0 ;
           }
@@ -44,21 +45,22 @@
           .quadrado{
                padding: 50px 50px;
                margin: 5px;
-          }
-          .contrato{
-               background-color: #E0A890;
-               text-align: center;
-               font-size: 2rem;
                text-transform: uppercase;
-               color:white;
+               font-size: 2rem;
                cursor: pointer;
-          }
-          .ted{
-               background-color: #FC7753;
                text-align: center;
-               font-size: 2rem;
-               text-transform: uppercase;
-               color: white;
+               background-color: #1E90FF;
+               color:white;
+          }
+          .menu{
+               width: 100%;
+               display: flex;
+               flex-direction: row;
+               flex-wrap: wrap;
+          }
+          .item{
+               flex: 33.33%;
+               text-align: center;
           }
      </style>
 </head>
@@ -68,9 +70,14 @@
                <div class="titulo">
                     <h1>Menu de PDF</h1>
                </div>
-               <a href="/create-contract"><div class="quadrado contrato">Contrato</div></a>
-               <a href="/create-ted"><div class="quadrado ted">TED</div></a>
-
+               <div class="menu">
+                    <a href="/create-contract" class="item"><div class="quadrado">Contrato</div></a>
+                    <a href="/create-ted" class="item"><div class="quadrado">TED</div></a>
+                    <a href="/" class="item"><div class="quadrado">N/D</div></a>
+                    <a href="/" class="item"><div class="quadrado">N/D</div></a>
+                    <a href="/" class="item"><div class="quadrado">N/D</div></a>
+                    <a href="/" class="item"><div class="quadrado">N/D</div></a>
+               </div>
           </div>
      </div>
 </body>
