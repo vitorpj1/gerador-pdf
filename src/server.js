@@ -61,15 +61,7 @@ const ted =[
 
 app.get("/contrato", async(request,response)=>{
 
-    const browser = await puppeteer.launch({
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
-      });
-
-    await page.waitFor(1000)
-    await page.emulateMediaType('screen')
-    await page.waitFor(5000)
-    const page = await browser.newPage();
+    const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
 
     await page.goto("https://gerador-pdf.herokuapp.com/contract",{
         waitUntil:"networkidle0"
