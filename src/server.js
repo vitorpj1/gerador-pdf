@@ -63,6 +63,8 @@ app.get("/contrato", async(request,response)=>{
 
     const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
 
+    const page = await browser.newPage();
+
     await page.goto("https://gerador-pdf.herokuapp.com/contract",{
         waitUntil:"networkidle0"
     })
