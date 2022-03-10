@@ -91,7 +91,7 @@ app.get("/ted", async(request,response)=>{
     const page = await browser.newPage();
 
     await page.goto("https://gerador-pdf.herokuapp.com/tedi",{
-        waitUntil:"networkidle0"
+        waitUntil:"networkidle2"
     })
 
     const pdf = await page.pdf({
