@@ -14,43 +14,24 @@
                <br>
                <a href="/" class="btn btn-dark btn-block">Inicio</a>
                <br>
-               <h1>Gerador de PDF - TED</h1>
+               <h1>Gerador de PDF - PROTOCOLO</h1>
           </div>
           <div class="card-body">
-               <form action="/save-ted" method="POST">
+               <form action="/save-protocolo" method="POST">
                <div class="row">
                     <div class="col">
                          <label for="">Nome:</label>
                          <input type="text" name="nome" id="" class="form-control" required>
                     </div>
                     <div class="col">
-                         <label for="">Agencia:</label>
-                         <input type="text" name="ag" id="ag" class="form-control" required>
-                    </div>
-               </div>
-
-               <div class="row">
-                    <div class="col">
-                         <label for="">Cpf:</label>
-                         <input type="text" name="cpf" id="" class="form-control cpf" required>
-                    </div>
-                    <div class="col">
-                         <label for="">Conta:</label>
-                         <input type="text" name="conta" id="conta" class="form-control" required>
-                    </div>
-               </div>
-
-               <div class="row">
-                    <div class="col">
                          <label for="">Valor:</label>
-                         <input type="text" name="valor" id="" class="form-control" required>
+                         <select class="form-select form-control" aria-label="" name="valor"" required>
+                              <option value="">Selecione o valor</option>
+                              <option value="345,79">345,79</option>
+                              <option value="400,29">400,29</option>
+                         </select>
                     </div>
-                    <div class="col">
-                         <label for="">Banco:</label>
-                         <%- include('partials/select'); %>
-                    </div>
-                    </div>
-               </div>               
+               </div>             
                <br>
                <input type="submit" class="btn btn-success btn-block" value="Gerar">
                </form>

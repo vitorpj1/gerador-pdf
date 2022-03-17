@@ -6,31 +6,23 @@ const puppeteer = require("puppeteer");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const flash = require("connect-flash");
-const res = require("express/lib/response");
+
+
+//Controllers
+const contratoController = require("../controllers/ContratoController");
+const tedController = require("../controllers/TedController");
+const protocoloController = require("../controllers/ProtocoloController");
 
 //view engine
 app.set("view engine","ejs");
-
 //Static folder
 app.use(express.static("public"))
-
-app.use(session(
-    {
-        secret:"secret",
-        resave:true,
-        saveUninitialized:true,
-        cookie:{ maxAge: 60000 }
-    }))
-
-
-app.use(flash());
-
-
+//bodyParser
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-//console.log(__dirname)
 
+//DB
 const cliente = [
     {
         nome:"teste",
@@ -46,7 +38,6 @@ const cliente = [
     }
         
 ]
-
 const ted =[
     {
         nome:"ted",
@@ -57,110 +48,22 @@ const ted =[
         banco:"Nubank",
     }
 ]
+const protocolo = [
+    {
+        nome:"Fulano",
+        valor:"345.79"
+    }
+]
 
 
-app.get("/contrato", async(request,response)=>{
-
-    const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
-
-    const page = await browser.newPage();
-
-    await page.goto("https://gerador-pdf.herokuapp.com/contract",{
-        waitUntil:"networkidle0"
-    })
-
-    const pdf = await page.pdf({
-        printBackground:true,
-        format:"a4",
-        width:"8.27in",
-        height:"11.7in"
-    })
-
-    await browser.close();
-
-    response.contentType("application/pdf")
-    
-    return response.send(pdf);
-})
-
-
-app.get("/ted", async(request,response)=>{
-
-    const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
-
-    const page = await browser.newPage();
-
-    await page.goto("https://gerador-pdf.herokuapp.com/tedi",{
-        waitUntil:['domcontentloaded', 'networkidle0']
-    })
-
-    const pdf = await page.pdf({
-        printBackground:true,
-        format:"a4",
-        width:"8.27in",
-        height:"11.7in"
-    })
-
-    await browser.close();
-
-    response.contentType("application/pdf")
-    
-    return response.send(pdf);
-})
-
-app.get("/create-contract",(request,response)=>{
-    response.render("contrato");
-})
-app.post("/save-contract",(request,response)=>{
-    const dataExtrato = request.body;
-    cliente.push(dataExtrato);
-    response.redirect("/contract");
-})
-
-app.get("/contract",(request,response)=>{
-    const filePath = path.join(__dirname, "./print-contract.ejs");
-
-
-    ejs.renderFile(filePath,{cliente},(err,html)=>{
-            if(err){
-                console.log(data)
-                return response.send(err)
-            }else{
-                //Enviar para o navegador
-                return  response.send(html); 
-            }                         
-        })
-})
-
-app.get("/create-ted",(request,response)=>{
-    response.render("ted");
-})
-
-app.post("/save-ted",(request,response)=>{
-    const dataTed = request.body
-    ted.push(dataTed);
-    response.redirect("/tedi")
-})
-
-app.get("/tedi",(request,response)=>{
-    const filePath = path.join(__dirname, "./print-ted.ejs");
-
-
-    ejs.renderFile(filePath,{ted},(err,html)=>{
-            if(err){
-                return response.send(err)
-            }else{
-                //Enviar para o navegador
-                return  response.send(html); 
-            }                         
-        })
-})
-
+//Routers
+app.use("/",protocoloController);
+app.use("/",tedController);
+app.use("/",contratoController);
 app.get("/",(request,response)=>{
     response.render("index")
 })
 
-const port  = process.env.PORT || 3001
-
+const port  = process.env.PORT || 3001;
 
 app.listen(port);
