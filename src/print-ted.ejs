@@ -53,7 +53,8 @@ PAUSADO NA PARTE DO TEDNPM
           var mes = String(data.getMonth() + 1).padStart(2, '0');
           var ano = data.getFullYear();
           dataAtual = dia + '/' + mes + '/' + ano;
-          var hora = data.getHours() < 10 ? "0"+data.getHours() : data.getHours();
+          var hora = (data.getHours()-3) 
+          var nHora =  hora < 10 ? "0"+hora : hora;
           var minuto = (data.getMinutes()+3) < 10 ? "0"+ data.getMinutes()  : (data.getMinutes()+3);
           var segundo = data.getSeconds() < 10 ? "0"+data.getSeconds(): data.getSeconds();
           var horario = hora + ":" + minuto + ":" + segundo;
