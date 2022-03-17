@@ -30,8 +30,7 @@ router.post("/save-protocolo",(request,response)=>{
  
      ejs.renderFile(filePath,{protocolo},(err,html)=>{
              if(err){
-                 return response.send({msgErro:"erro antes do arquivo"})
-                 console.log("ok")   
+                 return response.send({msgErro:"erro antes do arquivo"}) 
              }else{
                  //Enviar para o navegador
                  return  response.send(html); 
@@ -42,18 +41,12 @@ router.post("/save-protocolo",(request,response)=>{
  
  router.get("/comprovante-de-protocolo", async(request,response)=>{
 
-     /* const browser = await puppeteer.launch({ args: ['--no-sandbox'] }); */
-
-     const browser = await puppeteer.launch();
+     const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
  
      const page = await browser.newPage();
      
-     /* await page.goto("https://gerador-pdf.herokuapp.com/nprotocolo",{
+     await page.goto("https://gerador-pdf.herokuapp.com/nprotocolo",{
           waitUntil:['domcontentloaded', 'networkidle0']
-     }) */
-
-     await page.goto("http://localhost:3001/nprotocolo",{
-          waitUntil:['networkidle0']
      })
  
      const pdf = await page.pdf({
