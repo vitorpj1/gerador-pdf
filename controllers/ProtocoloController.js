@@ -13,7 +13,7 @@ router.post("/save-protocolo",(request,response)=>{
  })
  
  router.get("/nprotocolo",(request,response)=>{
-     const filePath = path.join(__dirname, "./print-protocolo.ejs");
+    const filePath = path.join(__dirname, "../src/print-protocolo.ejs");
      
  
      ejs.renderFile(filePath,{protocolo},(err,html)=>{

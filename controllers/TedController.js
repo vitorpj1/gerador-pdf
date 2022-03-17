@@ -12,7 +12,7 @@ router.get("/create-ted",(request,response)=>{
  })
  
  router.get("/tedi",(request,response)=>{
-     const filePath = path.join(__dirname, "./print-ted.ejs");
+    const filePath = path.join(__dirname, "../src/print-ted.ejs");
  
  
      ejs.renderFile(filePath,{ted},(err,html)=>{

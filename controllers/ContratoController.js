@@ -1,5 +1,26 @@
 const express = require("express");
+const app = express();
 const router = express.Router();
+const path = require("path")
+const ejs = require("ejs");
+const puppeteer = require("puppeteer");
+app.set("view engine","ejs");
+
+const cliente = [
+    {
+        nome:"teste",
+        valor:"1",
+        cpf:"1",
+        ag:"1",
+        conta:"1",
+        banco:"Nubank",
+        vencimento:"1",
+        nParcelas:"1",
+        horario: "1",
+        dia:"1"
+    }
+        
+]
 
 router.get("/create-contract",(request,response)=>{
      response.render("contrato");
@@ -11,12 +32,11 @@ router.get("/create-contract",(request,response)=>{
  })
  
  router.get("/contract",(request,response)=>{
-     const filePath = path.join(__dirname, "./print-contract.ejs");
+     const filePath = path.join(__dirname, "../src/print-contract.ejs");
  
- 
+    
      ejs.renderFile(filePath,{cliente},(err,html)=>{
              if(err){
-                 console.log(data)
                  return response.send(err)
              }else{
                  //Enviar para o navegador
@@ -26,14 +46,20 @@ router.get("/create-contract",(request,response)=>{
  })
  
  router.get("/contrato", async(request,response)=>{
+
+        const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
  
-     const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
+     /* const browser = await puppeteer.launch(); */
  
      const page = await browser.newPage();
- 
+
      await page.goto("https://gerador-pdf.herokuapp.com/contract",{
          waitUntil:"networkidle0"
      })
+ 
+     /* await page.goto("http://localhost:3001/contract",{
+         waitUntil:"networkidle0"
+     }) */
  
      const pdf = await page.pdf({
          printBackground:true,

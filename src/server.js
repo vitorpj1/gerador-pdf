@@ -1,8 +1,8 @@
-const path = require("path")
+
 const express = require("express");
 const app = express();
-const ejs = require("ejs");
-const puppeteer = require("puppeteer");
+
+
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const flash = require("connect-flash");
@@ -23,21 +23,7 @@ app.use(bodyParser.json())
 
 
 //DB
-const cliente = [
-    {
-        nome:"teste",
-        valor:"1",
-        cpf:"1",
-        ag:"1",
-        conta:"1",
-        banco:"Nubank",
-        vencimento:"1",
-        nParcelas:"1",
-        horario: "1",
-        dia:"1"
-    }
-        
-]
+
 const ted =[
     {
         nome:"ted",
