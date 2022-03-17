@@ -22,26 +22,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 
-//DB
-
-const ted =[
-    {
-        nome:"ted",
-        valor:"1",
-        cpf:"1",
-        ag:"1",
-        conta:"1",
-        banco:"Nubank",
-    }
-]
-const protocolo = [
-    {
-        nome:"Fulano",
-        valor:"345.79"
-    }
-]
-
-
 //Routers
 app.use("/",protocoloController);
 app.use("/",tedController);

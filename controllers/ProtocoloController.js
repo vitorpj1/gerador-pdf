@@ -1,5 +1,17 @@
 const express = require("express");
+const app = express();
 const router = express.Router();
+const path = require("path")
+const ejs = require("ejs");
+const puppeteer = require("puppeteer");
+app.set("view engine","ejs");
+
+const protocolo = [
+    {
+        nome:"Fulano",
+        valor:"345.79"
+    }
+]
 
 router.get("/create-protocolo",(request,response)=>{
      response.render("comprovante-de-protocolo")
@@ -30,12 +42,18 @@ router.post("/save-protocolo",(request,response)=>{
  
  router.get("/comprovante-de-protocolo", async(request,response)=>{
 
-     const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
+     /* const browser = await puppeteer.launch({ args: ['--no-sandbox'] }); */
+
+     const browser = await puppeteer.launch();
  
      const page = await browser.newPage();
- 
-     await page.goto("https://gerador-pdf.herokuapp.com/nprotocolo",{
+     
+     /* await page.goto("https://gerador-pdf.herokuapp.com/nprotocolo",{
           waitUntil:['domcontentloaded', 'networkidle0']
+     }) */
+
+     await page.goto("http://localhost:3001/nprotocolo",{
+          waitUntil:['networkidle0']
      })
  
      const pdf = await page.pdf({

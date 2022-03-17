@@ -1,5 +1,21 @@
 const express = require("express");
+const app = express();
 const router = express.Router();
+const path = require("path")
+const ejs = require("ejs");
+const puppeteer = require("puppeteer");
+app.set("view engine","ejs");
+
+const ted =[
+    {
+        nome:"ted",
+        valor:"1",
+        cpf:"1",
+        ag:"1",
+        conta:"1",
+        banco:"Nubank",
+    }
+]
 
 router.get("/create-ted",(request,response)=>{
      response.render("ted");
