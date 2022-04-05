@@ -47,17 +47,23 @@ router.get("/create-contract",(request,response)=>{
  
  router.get("/contrato", async(request,response)=>{
     var hostname = request.headers.host;
-    console.log(hostname);
+
 
      const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
  
      const page = await browser.newPage();
      
-
- 
-     await page.goto("https://gerador-pdf.herokuapp.com/contract",{
+    if(hostname = "localhost:3001"){
+        await page.goto("http://localhost:3001/contract",{
             waitUntil:['domcontentloaded', 'networkidle0']
      })
+    }else{
+    await page.goto("https://gerador-pdf.herokuapp.com/contract",{
+            waitUntil:['domcontentloaded', 'networkidle0']
+     })
+    }
+ 
+     
  
      const pdf = await page.pdf({
          printBackground:true,

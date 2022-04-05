@@ -40,7 +40,7 @@ router.get("/create-iof",(request,response)=>{
  })
  
  router.get("/comunicado-da-receita-federal", async(request,response)=>{
-
+    var hostname = request.headers.host;
         /* const browser = await puppeteer.launch({ args: ['--no-sandbox'] }); */
  
      const browser = await puppeteer.launch();
@@ -51,9 +51,15 @@ router.get("/create-iof",(request,response)=>{
          waitUntil:"networkidle0"
      }) */
  
-     await page.goto("/iof",{
-         waitUntil:"networkidle0"
+     if(hostname = "localhost:3001"){
+        await page.goto("http://localhost:3001/iof",{
+            waitUntil:['domcontentloaded', 'networkidle0']
      })
+    }else{
+    await page.goto("https://gerador-pdf.herokuapp.com/iof",{
+            waitUntil:['domcontentloaded', 'networkidle0']
+     })
+    }
  
      const pdf = await page.pdf({
          printBackground:true,

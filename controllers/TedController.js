@@ -46,14 +46,23 @@ router.get("/create-ted",(request,response)=>{
  })
  
  router.get("/ted", async(request,response)=>{
+    var hostname = request.headers.host;
+
  
      const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
  
      const page = await browser.newPage();
+
+     if(hostname == "localhost:3001"){
+        await page.goto("http://localhost:3001/iof",{
+            waitUntil:"networkidle0"
+        })
+    }
  
-     await page.goto("/tedi",{
+     await page.goto("https://www.gerador-pdf.herokuapp.com/tedi",{
          waitUntil:['domcontentloaded', 'networkidle0']
      })
+     
  
      const pdf = await page.pdf({
          printBackground:true,
