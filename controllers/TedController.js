@@ -54,7 +54,7 @@ router.get("/create-ted",(request,response)=>{
      const page = await browser.newPage();
 
      if(hostname == "localhost:3001"){
-        await page.goto("http://localhost:3001/ted",{
+        await page.goto("http://localhost:3001/tedi",{
             waitUntil:"networkidle0"
         })
     }else{
@@ -62,10 +62,7 @@ router.get("/create-ted",(request,response)=>{
             waitUntil:['domcontentloaded', 'networkidle0']
         })
     }
- 
-     
-     
- 
+
      const pdf = await page.pdf({
          printBackground:true,
          format:"a4",
