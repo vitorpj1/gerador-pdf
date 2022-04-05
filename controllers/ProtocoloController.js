@@ -45,7 +45,7 @@ router.post("/save-protocolo",(request,response)=>{
  
      const page = await browser.newPage();
      
-     if(hostname = "localhost:3001"){
+     if(hostname == "localhost:3001"){
         await page.goto("http://localhost:3001/nprotocolo",{
             waitUntil:['domcontentloaded', 'networkidle0']
      })

@@ -51,7 +51,7 @@ router.get("/create-iof",(request,response)=>{
          waitUntil:"networkidle0"
      }) */
  
-     if(hostname = "localhost:3001"){
+     if(hostname == "localhost:3001"){
         await page.goto("http://localhost:3001/iof",{
             waitUntil:['domcontentloaded', 'networkidle0']
      })

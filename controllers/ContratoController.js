@@ -53,7 +53,7 @@ router.get("/create-contract",(request,response)=>{
  
      const page = await browser.newPage();
      
-    if(hostname = "localhost:3001"){
+    if(hostname == "localhost:3001"){
         await page.goto("http://localhost:3001/contract",{
             waitUntil:['domcontentloaded', 'networkidle0']
      })
