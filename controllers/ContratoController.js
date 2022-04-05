@@ -51,7 +51,7 @@ router.get("/create-contract",(request,response)=>{
  
      const page = await browser.newPage();
  
-     await page.goto("/contract",{
+     await page.goto("https://gerador-pdf.herokuapp.com/contract",{
             waitUntil:['domcontentloaded', 'networkidle0']
      })
  
