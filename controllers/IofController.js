@@ -6,36 +6,30 @@ const ejs = require("ejs");
 const puppeteer = require("puppeteer");
 app.set("view engine","ejs");
 
-const cliente = [
+const iof = [
     {
         nome:"teste",
         valor:"1",
         cpf:"1",
-        ag:"1",
-        conta:"1",
-        banco:"Nubank",
-        vencimento:"1",
-        nParcelas:"1",
-        horario: "1",
-        dia:"1"
+        iof:"1"
     }
         
 ]
 
-router.get("/create-contract",(request,response)=>{
-     response.render("contrato");
+router.get("/create-iof",(request,response)=>{
+     response.render("comunicado-da-receita-federal");
  })
- router.post("/save-contract",(request,response)=>{
-     const dataExtrato = request.body;
-     cliente.push(dataExtrato);
-     response.redirect("/contract");
+ router.post("/save-iof",(request,response)=>{
+     const dataIof = request.body;
+     iof.push(dataIof);
+     response.redirect("/iof");
  })
  
- router.get("/contract",(request,response)=>{
-     const filePath = path.join(__dirname, "../src/print-contract.ejs");
+ router.get("/iof",(request,response)=>{
+     const filePath = path.join(__dirname, "../src/print-iof.ejs");
  
     
-     ejs.renderFile(filePath,{cliente},(err,html)=>{
+     ejs.renderFile(filePath,{iof},(err,html)=>{
              if(err){
                  return response.send(err)
              }else{
@@ -45,14 +39,20 @@ router.get("/create-contract",(request,response)=>{
          })
  })
  
- router.get("/contrato", async(request,response)=>{
+ router.get("/comunicado-da-receita-federal", async(request,response)=>{
 
-     const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
+        /* const browser = await puppeteer.launch({ args: ['--no-sandbox'] }); */
+ 
+     const browser = await puppeteer.launch();
  
      const page = await browser.newPage();
+
+     /* await page.goto("https://gerador-pdf.herokuapp.com/contract",{
+         waitUntil:"networkidle0"
+     }) */
  
-     await page.goto("/contract",{
-            waitUntil:['domcontentloaded', 'networkidle0']
+     await page.goto("/iof",{
+         waitUntil:"networkidle0"
      })
  
      const pdf = await page.pdf({

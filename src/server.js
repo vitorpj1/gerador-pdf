@@ -12,6 +12,7 @@ const flash = require("connect-flash");
 const contratoController = require("../controllers/ContratoController");
 const tedController = require("../controllers/TedController");
 const protocoloController = require("../controllers/ProtocoloController");
+const iofController = require("../controllers/IofController");
 
 //view engine
 app.set("view engine","ejs");
@@ -21,8 +22,8 @@ app.use(express.static("public"))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-
 //Routers
+app.use("/",iofController);
 app.use("/",protocoloController);
 app.use("/",tedController);
 app.use("/",contratoController);

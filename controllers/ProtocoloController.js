@@ -45,7 +45,7 @@ router.post("/save-protocolo",(request,response)=>{
  
      const page = await browser.newPage();
      
-     await page.goto("https://gerador-pdf.herokuapp.com/nprotocolo",{
+     await page.goto("/nprotocolo",{
           waitUntil:['domcontentloaded', 'networkidle0']
      })
  
