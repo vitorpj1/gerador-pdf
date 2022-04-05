@@ -9,10 +9,10 @@ const flash = require("connect-flash");
 
 
 //Controllers
-const contratoController = require("../controllers/ContratoController");
-const tedController = require("../controllers/TedController");
-const protocoloController = require("../controllers/ProtocoloController");
-const iofController = require("../controllers/IofController");
+const contratoController = require("./controllers/ContratoController");
+const tedController = require("./controllers/TedController");
+const protocoloController = require("./controllers/ProtocoloController");
+const iofController = require("./controllers/IofController");
 
 //view engine
 app.set("view engine","ejs");
