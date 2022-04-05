@@ -57,11 +57,13 @@ router.get("/create-ted",(request,response)=>{
         await page.goto("http://localhost:3001/ted",{
             waitUntil:"networkidle0"
         })
+    }else{
+        await page.goto("https://www.gerador-pdf.herokuapp.com/tedi",{
+            waitUntil:['domcontentloaded', 'networkidle0']
+        })
     }
  
-     await page.goto("https://www.gerador-pdf.herokuapp.com/tedi",{
-         waitUntil:['domcontentloaded', 'networkidle0']
-     })
+     
      
  
      const pdf = await page.pdf({
