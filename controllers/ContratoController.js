@@ -46,7 +46,7 @@ router.get("/create-contract",(request,response)=>{
  })
  
  router.get("/contrato", async(request,response)=>{
-    var hostname = req.headers.host;
+    var hostname = request.headers.host;
     console.log(hostname);
 
      const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
