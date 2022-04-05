@@ -58,7 +58,7 @@ router.get("/create-ted",(request,response)=>{
             waitUntil:"networkidle0"
         })
     }else{
-        await page.goto("https://www.gerador-pdf.herokuapp.com/tedi",{
+        await page.goto("https://gerador-pdf.herokuapp.com/tedi",{
             waitUntil:['domcontentloaded', 'networkidle0']
         })
     }
