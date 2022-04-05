@@ -46,10 +46,14 @@ router.get("/create-contract",(request,response)=>{
  })
  
  router.get("/contrato", async(request,response)=>{
+    var hostname = req.headers.host;
+    console.log(hostname);
 
      const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
  
      const page = await browser.newPage();
+     
+
  
      await page.goto("https://gerador-pdf.herokuapp.com/contract",{
             waitUntil:['domcontentloaded', 'networkidle0']
