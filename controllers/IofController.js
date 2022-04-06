@@ -43,7 +43,7 @@ router.get("/create-iof",(request,response)=>{
     var hostname = request.headers.host;
         /* const browser = await puppeteer.launch({ args: ['--no-sandbox'] }); */
  
-     const browser = await puppeteer.launch();
+     const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
  
      const page = await browser.newPage();
 
