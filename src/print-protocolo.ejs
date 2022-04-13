@@ -77,6 +77,50 @@ PAUSADO NA PARTE DO TEDNPM
 
      <%
 
+     function getMes(mesAtual){
+          switch(mesAtual){
+               case 0:
+                    mesAtual = "Janeiro";
+               break;
+               case 1:
+                    mesAtual = "Fevereiro";
+               break;
+               case 2:
+                    mesAtual = "Março";
+               break;
+               case 3:
+                    mesAtual = "Abril";
+               break;
+               case 4:
+                    mesAtual = "Maio";
+               break;
+               case 5:
+                    mesAtual = "Junho";
+               break;
+               case 6:
+                    mesAtual = "Julho";
+               break;
+               case 7:
+                    mesAtual = "Agosto";
+               break;
+               case 8:
+                    mesAtual = "Setembro";
+               break;
+               case 9:
+                    mesAtual = "Outubro";
+               break;
+               case 10:
+                    mesAtual = "Novembro";
+               break;
+               case 11:
+                    mesAtual = "Dezembro";
+               break;
+          }
+      
+          return mesAtual;
+          
+      }
+
      var d1 = 0;
      var d2 = 0;
      var d3 = 0;
@@ -96,6 +140,7 @@ PAUSADO NA PARTE DO TEDNPM
      var data = new Date();         
      var dia = String(data.getDate()).padStart(2, '0');
      var mes = String(data.getMonth() + 1).padStart(2, '0');
+     var mesAtual = data.getMonth();
      var ano = data.getFullYear();
      dataAtual = dia + '/' + mes + '/' + ano;
      var hora = data.getHours() < 10 ? "0"+data.getHours() : data.getHours();
@@ -171,7 +216,7 @@ PAUSADO NA PARTE DO TEDNPM
                     </tr>
                     <tr>
                          <td><strong>Data:</strong></td>
-                         <td class="spaceleft"><%= dia %> de Abril de <%= ano %></td>
+                         <td class="spaceleft"><%= dia %> de <%= getMes(mesAtual) %> de <%= ano %></td>
                     </tr>
                     <tr>
                          <td><strong>Apresentante:</strong></td>

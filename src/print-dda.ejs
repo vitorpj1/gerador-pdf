@@ -1,0 +1,152 @@
+<% let ultimoCliente = cliente[cliente.length -1] %>
+<%
+function getMes(mesAtual){
+    switch(mesAtual){
+         case 0:
+              mesAtual = "Janeiro";
+         break;
+         case 1:
+              mesAtual = "Fevereiro";
+         break;
+         case 2:
+              mesAtual = "Março";
+         break;
+         case 3:
+              mesAtual = "Abril";
+         break;
+         case 4:
+              mesAtual = "Maio";
+         break;
+         case 5:
+              mesAtual = "Junho";
+         break;
+         case 6:
+              mesAtual = "Julho";
+         break;
+         case 7:
+              mesAtual = "Agosto";
+         break;
+         case 8:
+              mesAtual = "Setembro";
+         break;
+         case 9:
+              mesAtual = "Outubro";
+         break;
+         case 10:
+              mesAtual = "Novembro";
+         break;
+         case 11:
+              mesAtual = "Dezembro";
+         break;
+    }
+
+    return mesAtual;
+    
+}
+
+    var data = new Date();   
+    let mesAtual = data.getMonth();
+    let dia = String(data.getDate()).padStart(2, '0');
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<title>DDA</title>
+     <style>
+          *{
+               font-size: 16px;
+               font-family: 'Open Sans';
+          }
+          .pag{
+            height: 11.69in;
+            margin: 0;
+            padding: 0;      
+            }
+          .logoImg{
+               width: 100%;
+          }
+          .titulo{
+               width: 80%;
+               text-align: right;
+               margin: 0 auto;
+               border: 0px solid black;
+          }
+          .titulo > strong{
+               font-size: 2rem;
+               text-align: center;
+          }
+          .titulo > span{
+               font-size: 1.5rem;
+          }
+          .titulo > span > span{
+              font-size: 1.5rem;
+          }
+          .corpo{
+               width: 80%;
+               border: 0px solid black;
+               margin: 0 auto;
+               font-size: 1.2rem;
+               line-height: 2.5rem;
+               text-align: justify;
+               text-justify: inter-word;
+          }
+          .corpo > strong{
+               font-size: 1.2rem;  
+          }
+          .assinatura{
+               width: 80%;
+               border: 0px solid black;
+               margin:0 auto;
+          }
+          .assinatura > img{
+               float: right;
+          }
+     </style>
+</head>
+<body>
+    <div class="pag">
+        <div class="logoImg">
+            <img src="logoserasa.jpeg" alt="" style="display: block;height:250px; margin:0 auto">
+       </div>
+  
+       <div class="titulo">
+            <strong>CARTA DE NOTIFICAÇÃO DE REGISTRO</strong> 
+            <br>
+            <span>São Paulo <%= dia %> de <%= getMes(mesAtual) %> de 2022</span> 
+       </div>
+       <br>
+       <div class="corpo">
+            Prezado(a) Senhor(a):<strong><%= ultimoCliente.nome %></strong>
+            CPF:<strong><%= ultimoCliente.cpf %></strong> disposto no art.43.§2.Do Código de Defesa 
+            do Consumidor,comunicamos-lhes que o credor(a)
+            FINANCE CORRESPONDENTE BANCARIO procedeu à 
+            aberturado(s) registro(s) de débito de V.S,no arquivo do Serviço
+            de Proteção ao Crédito Serasa Experian,com abrangência nacional, 
+            aos quais serão disponibilizado(s) para consulta após 7 dias da
+            emissão desta carta,ou seja em <strong id="dataCompleta">00/00/0000</strong> Solicitamos que
+            venha estar, regularizando a tarifa solicitadada D.D.A (DÉBITO 
+            DIRETO AUTORIZADO) essa tarifa ocorre no valor de <strong>R$<%= ultimoCliente.dda %></strong> 
+            onde terá que ser feita a regularização.Sendo feita a regularização
+            será creditado diretamente em conta o valor total de <strong>R$<%= ultimoCliente.valor %></strong>
+       </div>
+       <br><br><br>
+       <div class="assinatura">
+            <img src="assinatura-1.png" alt="" style="height: 80px;">
+            
+            <div style="clear:both"></div>
+       </div>
+    </div>
+</body>
+<script>
+    window.addEventListener("click",()=>{
+        window.location.href = "/dda";
+    })
+</script>
+</html>
+
