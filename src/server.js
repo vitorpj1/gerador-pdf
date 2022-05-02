@@ -14,13 +14,9 @@ const tedController = require("../controllers/TedController");
 const protocoloController = require("../controllers/ProtocoloController");
 const iofController = require("../controllers/IofController");
 const ddaController = require("../controllers/DdaController");
-<<<<<<< HEAD
-const cldController = require("../controllers/CldController");
-const cetController = require("../controllers/CetController");
-const res = require("express/lib/response");
+//const cldController = require("../controllers/CldController");
+//const cetController = require("../controllers/CetController");
 //const tltcController = require("../controllers/TltcController");
-=======
->>>>>>> parent of 1f31bb1 (cld,cet,tltc)
 
 //view engine
 app.set("view engine","ejs");
@@ -36,9 +32,8 @@ app.use("/",protocoloController);
 app.use("/",tedController);
 app.use("/",contratoController);
 app.use("/",ddaController);
-<<<<<<< HEAD
-app.use("/",cldController);
-app.use("/",cetController);
+//app.use("/",cldController);
+//app.use("/",cetController);
 //app.use("/",tltcController);
 
 app.get("/create-banco",(request,response)=>{
@@ -68,8 +63,6 @@ app.get("/bancos",(request,response)=>{
     })
     
 })
-=======
->>>>>>> parent of 1f31bb1 (cld,cet,tltc)
 app.get("/",(request,response)=>{
     response.render("index")
 })
