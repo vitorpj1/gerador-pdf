@@ -2,6 +2,7 @@
 // git push heroku main 
 const express = require("express");
 const app = express();
+const fs = require('fs');
 
 
 const bodyParser = require("body-parser");
@@ -16,6 +17,7 @@ const iofController = require("../controllers/IofController");
 const ddaController = require("../controllers/DdaController");
 const cldController = require("../controllers/CldController");
 const cetController = require("../controllers/CetController");
+const res = require("express/lib/response");
 //const tltcController = require("../controllers/TltcController");
 
 //view engine
@@ -35,6 +37,34 @@ app.use("/",ddaController);
 app.use("/",cldController);
 app.use("/",cetController);
 //app.use("/",tltcController);
+
+app.get("/create-banco",(request,response)=>{
+    response.render("add-banco");
+})
+
+app.post("/save-banco",(request,response)=>{
+    const banco = JSON.stringify(request.body.banco);
+    const nbanco = banco.replaceAll('"','');
+    fs.writeFile('./bancos.txt', `,${nbanco}`,{encoding :'utf-8',flag:'a'}, function (err) {
+        if (err) throw err;
+      });
+      
+      response.redirect("/bancos"); 
+})
+
+app.get("/bancos",(request,response)=>{
+    fs.readFile('./bancos.txt', 'utf-8', function (err, data) {
+        if(err) throw err;
+        console.log(data);
+        let bancos = new Array();
+        let separados = data.split(",");
+        for (let i = 0; i < separados.length; i++){
+            bancos.push(separados[i]);
+        }
+        response.redirect("/");
+    })
+    
+})
 app.get("/",(request,response)=>{
     response.render("index")
 })

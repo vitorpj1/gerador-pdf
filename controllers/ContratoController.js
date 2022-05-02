@@ -1,3 +1,4 @@
+const fs = require('fs');
 const express = require("express");
 const app = express();
 const router = express.Router();
@@ -23,7 +24,17 @@ const cliente = [
 ]
 
 router.get("/create-contract",(request,response)=>{
-     response.render("contrato");
+    /* fs.readFile('./bancos.txt', 'utf-8', function (err, data) {
+        if(err) throw err;
+        let bancos = new Array();
+        let separados = data.split(",");
+        for (let i = 0; i < separados.length; i++){
+            bancos.push(separados[i]);
+        }
+        response.render("contrato",{bancos:bancos})
+    }) */
+
+    response.render("contrato");
  })
  router.post("/save-contract",(request,response)=>{
      const dataExtrato = request.body;
