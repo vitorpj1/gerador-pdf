@@ -41,6 +41,9 @@ PAUSADO NA PARTE DO TEDNPM
       td > strong{
            font-size: 1.3rem;
       }
+      span{
+           font-size: 1.3rem;
+      }
       .linha3{
            font-size: 1.5rem;
       }
@@ -186,7 +189,7 @@ PAUSADO NA PARTE DO TEDNPM
                     </tr>
                     <tr>
                          <td><strong>Data:</strong></td>
-                         <td class="spaceleft"><%= dia %> de Abril de <%= ano %></td>
+                         <td class="spaceleft"><%= dia %> de <span id="mes"></span> de <%= ano %></td>
                     </tr>
                     <tr>
                          <td><strong>Apresentante:</strong></td>
@@ -263,9 +266,15 @@ PAUSADO NA PARTE DO TEDNPM
      </div>
      
  </body>
+ <script src="js/dataScript.js"></script>
  <script>
       window.addEventListener("click",()=>{
           window.location.assign("/comprovante-de-protocolo");
       })
+
+      const mesField = document.getElementById('mes');
+
+      mesField.innerHTML = getMesNome();
+
   </script>
  </html>
