@@ -52,7 +52,7 @@ router.get("/create-cld",(request,response)=>{
             waitUntil:['domcontentloaded', 'networkidle0']
      })
     }else{
-    await page.goto("https://gerador-pdf.herokuapp.com/cld",{
+    await page.goto("https://gerador-pdf.herokuapp.com/ncld",{
             waitUntil:['domcontentloaded', 'networkidle0']
      })
     }
