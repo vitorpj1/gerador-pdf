@@ -63,8 +63,8 @@ app.get("/bancos",(request,response)=>{
     })
     
 })
-app.get("/a",(request,response)=>{
-    response.render("indexe")
+app.get("/",(request,response)=>{
+    response.send("error")
 })
 
 const port  = process.env.PORT || 3001;
