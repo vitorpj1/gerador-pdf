@@ -64,7 +64,7 @@ app.get("/bancos",(request,response)=>{
     
 })
 app.get("/a",(request,response)=>{
-    response.render("index")
+    response.render("indexe")
 })
 
 const port  = process.env.PORT || 3001;
