@@ -63,7 +63,7 @@ app.get("/bancos",(request,response)=>{
     })
     
 })
-app.get("/",(request,response)=>{
+app.get("/a",(request,response)=>{
     response.render("index")
 })
 
