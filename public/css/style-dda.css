@@ -1,0 +1,52 @@
+
+*{
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+     font-size: 16px;
+     font-family: 'Open Sans';
+}
+.pag{
+  height: 11.68in;
+  margin: 0;
+  padding: 0;
+  }
+.logoImg{
+     width: 100%;
+}
+.titulo{
+     width: 80%;
+     text-align: right;
+     margin: 0 auto;
+     border: 0px solid black;
+}
+.titulo > strong{
+     font-size: 2rem;
+     text-align: center;
+}
+.titulo > span{
+     font-size: 1.5rem;
+}
+.titulo > span > span{
+     font-size: 1.5rem;
+}
+.corpo{
+     width: 80%;
+     border: 0px solid black;
+     margin: 0 auto;
+     font-size: 1.2rem;
+     line-height: 2.5rem;
+     text-align: justify;
+     text-justify: inter-word;
+}
+.corpo > strong{
+     font-size: 1.2rem;  
+}
+.assinatura{
+     width: 80%;
+     border: 0px solid black;
+     margin:0 auto;
+}
+.assinatura > img{
+     float: right;
+}
